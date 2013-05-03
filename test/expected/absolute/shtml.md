@@ -1,0 +1,1 @@
+![Hey!](<%= cwd %>/path/to/myImage)

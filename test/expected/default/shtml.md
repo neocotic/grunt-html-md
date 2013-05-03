@@ -1,0 +1,1 @@
+![Hey!](path/to/myImage)

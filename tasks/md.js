@@ -10,8 +10,14 @@ module.exports = function(grunt) {
   // Module dependencies
   // -------------------
 
-  var md   = require('md')
+  var md   = require('html-md')
     , path = require('path');
+
+  // Constants
+  // ---------
+
+  // Regular expression used to identify HTML files using common extensions.
+  var R_HTML_EXT = /\.s?html?$/i;
 
   // Task
   // ----
@@ -29,21 +35,41 @@ module.exports = function(grunt) {
     grunt.verbose.writeflags(options, 'Options');
 
     function deriveTarget(file) {
-      var dir  = outputs.output || path.dirname(file)
+      var dir  = options.output || path.dirname(file)
         , name = path.basename(file, path.extname(file));
 
       return path.join(dir, name + extension);
     }
 
-    sources.forEach(function (source) {
+    function convert(source) {
       var html   = grunt.file.read(source)
         , target = deriveTarget(source);
 
-      // TODO: Log stuff!
+      grunt.log.write('Converting ' + path.basename(source) + '...');
+      grunt.verbose.writeln('Contents read from file:', html);
+      grunt.verbose.writeln('Derived target file: ' + target);
 
       var markdown = md(html, options);
 
-      grunt.file.write(target, markdown || ' ');
+      if (grunt.file.write(target, markdown || ' ')) {
+        grunt.log.ok();
+      }
+    }
+
+    sources.forEach(function (source) {
+      if (grunt.file.isDir(source)) {
+        grunt.verbose.writeln('Converting files in directory: ' + source);
+
+        grunt.file.recurse(source, function (file) {
+          grunt.verbose.writeln('Checking for HTML-ish extension: ' + file);
+
+          if (R_HTML_EXT.test(path.extname(file))) {
+            convert(file);
+          }
+        });
+      } else {
+        convert(source);
+      }
     });
 
   });
