@@ -3,13 +3,16 @@
 // Module dependencies
 // -------------------
 
-var grunt = require('grunt');
+var path  = require('path')
+  , grunt = require('grunt');
 
 // Data
 // ----
 
 var data = {
-  cwd: 'file://' + process.cwd()
+  absolute: function(relative) {
+    return path.resolve(process.cwd(), '..', relative);
+  }
 };
 
 // Helpers
@@ -94,6 +97,22 @@ exports.md = {
         'tmp/absolute/shtml.md',
         'test/expected/absolute/shtml.md',
         'Should convert HTML file to Markdown with absolute images URLs');
+
+      test.done();
+    }
+
+  , convertBase: function(test) {
+      test.expect(2);
+
+      assertFileEquality(test,
+        'tmp/base/html1.md',
+        'test/expected/base/html1.md',
+        'Should convert HTML file to Markdown with absolute link URLs relative to base URL');
+
+      assertFileEquality(test,
+        'tmp/base/shtml.md',
+        'test/expected/base/shtml.md',
+        'Should convert HTML file to Markdown with absolute images URLs relative to base URL');
 
       test.done();
     }

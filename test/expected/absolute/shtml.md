@@ -1,1 +1,1 @@
-![Hey!](<%= cwd %>/path/to/myImage)
+![Hey!](file://<%= absolute('path/to/myImage') %>)

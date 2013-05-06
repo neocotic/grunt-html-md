@@ -48,6 +48,17 @@ module.exports = function(grunt) {
                 , output: 'tmp/absolute'
               }
           }
+        , convertBase: {
+              src: [
+                  'test/fixtures/html1.html'
+                , 'test/fixtures/shtml.shtml'
+              ]
+            , options: {
+                  absolute: true
+                , base: 'http://example.com/sub/'
+                , output: 'tmp/base'
+              }
+          }
         , convertInline: {
               src: ['test/fixtures/html1.html']
             , options: {

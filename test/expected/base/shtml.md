@@ -1,0 +1,1 @@
+![Hey!](http://example.com/sub/path/to/myImage)

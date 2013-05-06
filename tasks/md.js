@@ -22,8 +22,11 @@ module.exports = function(grunt) {
   // Task
   // ----
 
+  // Register the `md` multi-task.
   grunt.registerMultiTask('md', 'Convert HTML files into Markdown', function () {
 
+    // Extract the user-defined `options` while falling back on predefined default values where
+    // required.
     var options   = this.options({
             absolute: false
           , inline:   false
@@ -34,6 +37,10 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
+    // Derive the target file using either the `output` option or parent directory of the `file` as
+    // the target directory.  
+    // The target file name will always be the base name of the `file` appended with the derived
+    // target extension (i.e. `.markdown` if the `longExt` option is enabled; otherwise `.md`).
     function deriveTarget(file) {
       var dir  = options.output || path.dirname(file)
         , name = path.basename(file, path.extname(file));
@@ -41,6 +48,8 @@ module.exports = function(grunt) {
       return path.join(dir, name + extension);
     }
 
+    // Read the contents of the `source` file as HTML and convert it to Markdown using `md` using
+    // the appropriate options.
     function convert(source) {
       var html   = grunt.file.read(source)
         , target = deriveTarget(source);
@@ -56,6 +65,9 @@ module.exports = function(grunt) {
       }
     }
 
+    // Ensure all source files are have their HTML contents converted into Markdown using `md`.  
+    // If any of the sources resolve to a directory, recursively convert each file within that
+    // directory (and any of its sub-directories) with an HTML extension.
     sources.forEach(function (source) {
       if (grunt.file.isDir(source)) {
         grunt.verbose.writeln('Converting files in directory: ' + source);
