@@ -23,5 +23,5 @@ md: {
 }
 ```
 
-If no `output` is specified then the Markdown file will be created in the same directory as the
-source file.
+If no `output` option is specified then the Markdown file will be created in the same directory as
+the source file.
