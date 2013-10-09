@@ -10,8 +10,8 @@ module.exports = function(grunt) {
   // Module dependencies
   // -------------------
 
-  var md   = require('html-md')
-    , path = require('path');
+  var md = require('html-md');
+  var path = require('path');
 
   // Constants
   // ---------
@@ -27,13 +27,13 @@ module.exports = function(grunt) {
 
     // Extract the user-defined `options` while falling back on predefined default values where
     // required.
-    var options   = this.options({
-            absolute: false
-          , inline:   false
-          , longExt:  false
-        })
-      , extension = options.longExt ? '.markdown' : '.md'
-      , sources   = this.filesSrc;
+    var options = this.options({
+      inline:   false,
+      longExt:  false,
+      absolute: false
+    });
+    var sources = this.filesSrc;
+    var extension = options.longExt ? '.markdown' : '.md';
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -42,8 +42,8 @@ module.exports = function(grunt) {
     // The target file name will always be the base name of the `file` appended with the derived
     // target extension (i.e. `.markdown` if the `longExt` option is enabled; otherwise `.md`).
     function deriveTarget(file) {
-      var dir  = options.output || path.dirname(file)
-        , name = path.basename(file, path.extname(file));
+      var dir  = options.output || path.dirname(file);
+      var name = path.basename(file, path.extname(file));
 
       return path.join(dir, name + extension);
     }
@@ -51,8 +51,8 @@ module.exports = function(grunt) {
     // Read the contents of the `source` file as HTML and convert it to Markdown using `md` using
     // the appropriate options.
     function convert(source) {
-      var html   = grunt.file.read(source)
-        , target = deriveTarget(source);
+      var html   = grunt.file.read(source);
+      var target = deriveTarget(source);
 
       grunt.log.write('Converting ' + path.basename(source) + '...');
       grunt.verbose.writeln('Contents read from file:', html);

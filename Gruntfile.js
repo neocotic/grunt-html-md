@@ -12,72 +12,66 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-      clean: ['tmp']
+    clean: [ 'tmp' ],
 
-    , jshint: {
-          all: [
-              'Gruntfile.js'
-            , 'tasks/*.js'
-            , '<%= nodeunit.tests %>'
-          ]
-        , options: {
-            jshintrc: '.jshintrc'
-          }
-      }
+    jshint: {
+      all: [
+        'Gruntfile.js',
+        'tasks/*.js',
+        '<%= nodeunit.tests %>'
+      ],
+      options: { jshintrc: '.jshintrc' }
+    },
 
-    , md: {
-          convertAll: {
-              src: ['test/fixtures']
-            , options: {
-                output: 'tmp/all'
-              }
-          }
-        , convertHtml: {
-              src: ['test/fixtures/*.html']
-            , options: {
-                output: 'tmp/html'
-              }
-          }
-        , convertAbsolute: {
-              src: [
-                  'test/fixtures/html1.html'
-                , 'test/fixtures/shtml.shtml'
-              ]
-            , options: {
-                  absolute: true
-                , output: 'tmp/absolute'
-              }
-          }
-        , convertBase: {
-              src: [
-                  'test/fixtures/html1.html'
-                , 'test/fixtures/shtml.shtml'
-              ]
-            , options: {
-                  absolute: true
-                , base: 'http://example.com/sub/'
-                , output: 'tmp/base'
-              }
-          }
-        , convertInline: {
-              src: ['test/fixtures/html1.html']
-            , options: {
-                  inline: true
-                , output: 'tmp/inline'
-              }
-          }
-        , convertLong: {
-              src: ['test/fixtures']
-            , options: {
-                  longExt: true
-                , output: 'tmp/long'
-              }
-          }
+    md: {
+      convertAll: {
+        src: [ 'test/fixtures' ],
+        options: { output: 'tmp/all' }
+      },
+      convertHtml: {
+        src: [ 'test/fixtures/*.html' ],
+        options: { output: 'tmp/html' }
+      },
+      convertAbsolute: {
+        src: [
+          'test/fixtures/html1.html',
+          'test/fixtures/shtml.shtml'
+        ],
+        options: {
+          output: 'tmp/absolute',
+          absolute: true
+        }
+      },
+      convertBase: {
+        src: [
+          'test/fixtures/html1.html',
+          'test/fixtures/shtml.shtml'
+        ],
+        options: {
+          base: 'http://example.com/sub/',
+          output: 'tmp/base',
+          absolute: true
+        }
+      },
+      convertInline: {
+        src: [ 'test/fixtures/html1.html' ],
+        options: {
+          inline: true,
+          output: 'tmp/inline'
+        }
+      },
+      convertLong: {
+        src: [ 'test/fixtures' ],
+        options: {
+          output: 'tmp/long',
+          longExt: true
+        }
       }
+    },
 
-    , nodeunit: {
-        tests: ['test/*_test.js']
-      }
+    nodeunit: {
+      tests: [ 'test/*_test.js' ]
+    }
 
   });
 
@@ -90,7 +84,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  grunt.registerTask('test', ['clean', 'md', 'nodeunit']);
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('test', [ 'clean', 'md', 'nodeunit' ]);
+  grunt.registerTask('default', [ 'jshint', 'test' ]);
 
 };

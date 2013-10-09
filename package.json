@@ -1,7 +1,7 @@
 {
   "name": "grunt-html-md",
   "description": "Convert HTML files to Markdown",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/neocotic/grunt-html-md",
   "bugs": {
     "url": "https://github.com/neocotic/grunt-html-md/issues"
@@ -25,19 +25,16 @@
     "url": "git://github.com/neocotic/grunt-html-md.git"
   },
   "dependencies": {
-    "html-md": "~3.0.1"
+    "html-md": "~3.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.0",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.6.2",
-    "grunt-contrib-nodeunit": "~0.2.0"
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"
-  },
-  "engines": {
-    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "grunt test"

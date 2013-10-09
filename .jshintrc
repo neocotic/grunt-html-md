@@ -1,18 +1,18 @@
 {
-    "boss":      true
-  , "camelcase": true
-  , "curly":     false
-  , "eqeqeq":    true
-  , "immed":     true
-  , "latedef":   true
-  , "laxcomma":  true
-  , "maxlen":    100
-  , "newcap":    true
-  , "noarg":     true
-  , "node":      true
-  , "nonew":     true
-  , "quotmark":  "single"
-  , "strict":    true
-  , "undef":     true
-  , "unused":    true
+  "boss": true,
+  "node": true,
+  "curly": false,
+  "immed": true,
+  "noarg": true,
+  "nonew": true,
+  "undef": true,
+  "eqeqeq": true,
+  "maxlen": 100,
+  "newcap": true,
+  "strict": true,
+  "unused": true,
+  "latedef": true,
+  "laxcomma": true,
+  "quotmark": "single",
+  "camelcase": true
 }

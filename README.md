@@ -77,7 +77,7 @@ Create Markdown files with the long file extension (i.e. `.markdown`).
 ``` javascript
 md: {
   convert: {
-    src: ['path/to/*.html'],
+    src: [ 'path/to/*.html' ],
     options: {
       output: 'path/to/dest'
     }
@@ -89,9 +89,9 @@ md: {
       'path/to/more/*.html'
     ],
     options: {
-      absolute: true,
       base: 'http://neocotic.com/html.md',
-      output: 'path/to/dest'
+      output: 'path/to/dest',
+      absolute: true
     }
   }
 }
